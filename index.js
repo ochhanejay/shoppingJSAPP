@@ -82,6 +82,19 @@ $(function(){
 
     
 });
+let cardData = [
+    {Photo:"images/1.jpg",Name:"Total Women Centers",Cases:19},
+    {Photo:"images/1.jpg",Name:"Total Cases Registered In Women Centers",Cases:423},
+    {Photo:"images/3.jpg",Name:"Total Sexual Abuse Cases in PS",Cases:34},
+    {Photo:"images/4.jpg",Name:"FIR",Cases:423},
+    {Photo:"images/5.jpg",Name:"Medical Test",Cases:26},
+    {Photo:"images/6.jpg",Name:"No. 161 Done",Cases:48},
+    {Photo:"images/7.jpg",Name:"No. 164 Done",Cases:43},
+    {Photo:"images/8.jpg",Name:"FSL",Cases:35},
+    {Photo:"images/9.png",Name:"Convicted",Cases:34},
+    {Photo:"images/10.png",Name:"Aquitted",Cases:34}
+
+];
 
 function bodyload(){
     let crnUser = JSON.parse(localStorage.getItem("currentuser"));
@@ -89,29 +102,45 @@ function bodyload(){
     
     if(crnUser.role === 'Reception') {
             hideSomeFunctions();
+
+            
+            
     }
+    for( index in cardData){
+        var cardDash = document.getElementById('make-card');
 
-    let carddata = [
-        {Photo:"images/girl.jpg", Name:"first", Count:"12"},
-        {Photo:"images/girl.jpg", Name:"first", Count:"13"},
-        {Photo:"images/girl.jpg", Name:"first", Count:"14"},
-        {Photo:"images/girl.jpg", Name:"first", Count:"15"},
-        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
-        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
-        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
-        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
-        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
-        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
-        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
-        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        var cardDiv = document.createElement('div');
+            cardDiv.className = 'card col-3  text-center ';
+            cardDiv.style.margin='10px';
+            cardDiv.style.width='290px';
+            cardDiv.style.height='200px';
+            cardDiv.style.borderRadius='20px';
 
-    ];
-    $.each(carddata,function(key,value){
-        $(` <div> <img src="${value.Photo}"> 
-        <h5>${value.Name} </h5> 
-        <h4> ${value.Count} </h4> 
-        </div> </div>`).appendTo('#make-card');
-    });
+            var bodyDiv = document.createElement('div');
+            bodyDiv.className = 'card-body';
+            var bodyImg = document.createElement('img');
+            bodyImg.src = cardData[index].Photo;
+            bodyImg.width = '100';
+            bodyImg.height = '100';
+            bodyDiv.appendChild(bodyImg);
+            var bodyH6= document.createElement('h6');
+            bodyH6.innerHTML = cardData[index].Name;
+            bodyDiv.appendChild(bodyH6);
+            var bodyH2 = document.createElement('h2');
+            bodyH2.innerHTML = cardData[index].Cases;
+            bodyDiv.appendChild(bodyH2);
+            cardDiv.appendChild(bodyDiv);
+
+            cardDash.appendChild(cardDiv);
+    }
+   
+    // $.each(carddata,function(key,value){
+        
+    //     $(` <div> <img src="${value.Photo}"> 
+    //     <h5>${value.Name} </h5> 
+    //     <h4> ${value.Count} </h4> 
+    //     </div> </div>`).appendTo('#make-card');
+    // });
 
 };
 function hideSomeFunctions() {
