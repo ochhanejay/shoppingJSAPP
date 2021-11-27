@@ -1,7 +1,8 @@
-function bodyload() {
-    let crnUser = JSON.parse(localStorage.getItem("currentuser"));
-    $("#role").html(crnUser.role);
-}
+
+   
+    
+
+  
 $(function(){
     let userdetail = [
         {userid : "a" , password : "a123" , name: "a1", role: "Reception"},
@@ -13,10 +14,9 @@ $(function(){
     $('#login-btn').click(()=>{
         
 
-        let currentuser = {}
 
-    var txtid = document.getElementById('user-id').value;
-    var txtpassword = document.getElementById('user-password').value;
+            var txtid = document.getElementById('user-id').value;
+            var txtpassword = document.getElementById('user-password').value;
 
     
 
@@ -24,15 +24,37 @@ $(function(){
         for(var data of userdetail){debugger;
             if(data.userid === txtid && data.password === txtpassword){
 
-                currentuser = userdetail.filter(function(item){return item.userid == txtid})
-
-                localStorage.setItem("currentuser",JSON.stringify(data));
+               
+                    
+                    localStorage.setItem("currentuser",JSON.stringify(data));
 
                     localStorage.setItem("userdetail",JSON.stringify(userdetail));
+
+                if(data.role == "Reception"){
+
                     currentuser = {};
-                    //  document.getElementById('role').innerHTML = "xyz";
                     window.location=("case.html");
+
+
+
+                    $("#forms").style.display="none";
+                    $("#key-contacts").style.display="none";
+                    document. getElementById("forms").disabled = true;
+                    document. getElementById("key-contacts").disabled = true;
+                    document.getElementById("forms").style. display = "none";
                 return;
+            }
+
+
+            if(data.role == "Addmin"){
+                window.location=("dashboard.html");
+                return;
+               
+            }
+            if(data.role == "Security"){
+                window.location=("report.html")
+                return;
+            }
 
             }
         };
@@ -52,4 +74,39 @@ $(function(){
     $("#case").click(()=>{
         window.location=("case.html");
     });
+
+
+    $("#forms").click(()=>{
+                    // $("#forms").style.display="none";
+                    // $("#key-contacts").style.display="none";
+                    // document. getElementById("forms").disabled = true;
+                    // document. getElementById("key-contacts").disabled = true;
+                    document.getElementById("forms").style. display = "none";
+                    document. getElementById("key-contacts").style.display = "none";
+
+    });
 });
+function bodyload(){debugger;
+    let crnUser = JSON.parse(localStorage.getItem("currentuser"));
+    $("#role").html(crnUser.role);
+
+    let carddata = [
+        {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+        // {Photo:"images/girl.jpg", Name:"first", Count:"12"},
+
+    ];
+    $.each(carddata,function(key,value){
+        $(` <div> <img src="${value.Photo}"> <h5>${value.Name} </h5> <h4> ${value.Count} </h4> </div> </div>`).appendTo('#make-card');
+    });
+
+};

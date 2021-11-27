@@ -9,14 +9,19 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="index.js"></script>
     </head>
-    <body onload="bodyload()">
+    <body  onload="bodyload()">
        <div class="row">
         <div class="col-2 rio">
-            <img src="suraksha.png" height="50px" width="106%">
+            <img src="images/suraksha.png" height="50px" width="106%">
             <button id="dashboard"><span><i class="fas fa-signal"></i></span>  Dashboard</button>
     
-    <button style="background-color: rgb(109, 250, 121);" id="case"><span><i class="fas fa-user-injured"></i></span>    Case</button>
+    <button style="background-color: rgb(109, 250, 121);" id="case"><span><i class="fas fa-user-injured"></i></span>    Case</button><br>
             <button id="reports"><span><i class="fas fa-flag"></i></span>   Reports</button>
+            <button id="user-management"><span><i class="far fa-building"></i></span> User Management</button>
+            <button id="center-management"><span><i class="fas fa-users"></i></span>  Center Management</button>
+            <button id="forms"><span><i class="far fa-file"></i></sapn> Forms</button>
+            <button id="key-contacts"><span><i class="fal fa-book"></i></span>  Key Contacts</button>
+
         </div>
         <div class="col-10">
             <nav class="navbar navbar-light bg-light">
@@ -24,7 +29,7 @@
                   <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="searchbtn" type="submit">Search</button>
-                    <button class="right"><span style="color: red;"><i class="far fa-bell" ></i></span></button>
+                    <button class="right"><span style="color: red; background-color: rgb(252, 247, 247);"><i class="far fa-bell" ></i></span></button>
                     <h3 style="margin-left: 20px;" id="role"></h3>
                   </form>
                 </div>

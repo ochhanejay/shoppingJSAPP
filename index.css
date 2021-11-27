@@ -40,7 +40,7 @@
 .rio button{
     margin:10px 10px;
     padding: 10px;
-    font-size: 25px;
+    font-size: 100%;
     border: none;
     border-radius: 10px;
     background-color: rgb(224, 252, 208);
@@ -60,6 +60,10 @@
     padding: 5px 10px;
     background-color: rgb(135, 250, 135);
     border: none;
+}
+.searchbtn:hover{
+    background-color: rgb(172, 245, 172);
+
 }
 
 .right{
@@ -88,4 +92,17 @@
     background-color: white;
     border-radius: 100%;
     padding: 5px;
+}
+.make{
+     display: flex; 
+     width: 200px; 
+
+}
+.make_card img{
+    height: 200px;
+    width: 200px;
+}
+.col-3{
+    width: 200px;
+    height: 200px;
 }
