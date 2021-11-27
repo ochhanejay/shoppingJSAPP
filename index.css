@@ -67,11 +67,18 @@
 }
 
 .right{
-    float: right;
-    margin-left: 630px;
+    position: absolute;
+    right: 200px;
+    top: 15px;
+    /* margin-left: 230px; */
     border:none;
     background-color:white;
     font-size: 25px;
+}
+.userHead{
+    position: absolute;
+    right: 20px;
+    display: flex;
 }
 .my-case{
     margin-left: 20px;
