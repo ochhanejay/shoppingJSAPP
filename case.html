@@ -8,6 +8,52 @@
         <link rel="stylesheet" href="index.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="index.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        
+        <script>
+          $ (document).ready(function(){
+            
+            // $("caseTable").css("display","none")
+            
+            let caseDetails1= localStorage.getItem('caseDetails1');
+            if(caseDetails1 !== undefined){
+                caseDetails1 = JSON.parse(caseDetails1);
+                for(let cData of caseDetails1){
+                var addcontrols = "<tr onclick>"
+                    addcontrols += `<td>${cData.id}</td>
+                                    <td>${cData.firstName}</td>
+                                    <td>${cData.ptnFatherName}</td>
+                                    <td>${cData.ptnMotherName}</td>
+                                    <td>${cData.ptnGender}</td>
+                                    <td>${cData.ptnDob}</td>
+                                    <td>${cData.age}</td>
+                                    <td>${cData.number}</td>
+                                    <td>${cData.email}</td>
+                                    </tr>`;
+                    $("#tbodyData").append(addcontrols);
+                    $("tr").css({"background-color":"#D3E4CD","color":"black","border":"2px solid green"});
+            }
+            }
+            // getCaseData(id){
+            //     data = caseDetails.filter(id);
+
+            // }
+            $("#caseTable").dataTable();       
+            document.getElementById('caseNumber').innerText=caseDetails1.length-5; 
+            // $( "tr" ).css({"cursor":"pointer"});
+            // $( "tr" ).click(function() {
+            //   debugger
+            //     alert(caseDetails1.filter(id));
+            //     window.location="newCaseData.html";
+            //   });   
+        }); 
+          
+          function btnNewCase(){
+            window.location='newCase.html'
+          }
+        </script>
     </head>
     <body  onload="bodyload()">
        <div class="row">
@@ -44,14 +90,34 @@
               <h2>My Cases</h2>
               <p>Home  >  My Cases</p>
               <div class="button">
-                <button>New Case    <span>1</span></button>
+                <button>New Case    <span id="caseNumber">1</span></button>
                 <button style="margin-left: 30px;">Follow's    <span>0</span></button>
                 <button style="margin-left: 30px;">Closed Cases    <span>0</span></button>
-                <button style="margin-left: 30px;">Create New Cases    </button>
+                <button style="margin-left: 30px;" onclick="btnNewCase()" id="btnNewCase">Create New Cases    </button>
 
               </div>
 
             </div>
+            <table id="caseTable">
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Name</th>
+                      <th>Father Name</th>
+                      <th>Mother Name</th>
+                      <th>Gender</th>
+                      <th>Date of Birth</th>
+                      <th>Age</th>
+                      <th>Contact No.</th>
+                      <th>Email</th>
+
+                  </tr>
+              </thead>
+               <tbody id="tbodyData">
+                  
+              </tbody>
+              
+          </table>
         </div>
        </div> 
     </body>

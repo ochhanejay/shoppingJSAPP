@@ -1,3 +1,4 @@
+
 *{
  margin: 0;
  padding: 0;   
@@ -18,7 +19,7 @@
 }
 .form input,label,a{
     width: 80%;
-    margin: 10px 50px;
+    /* margin: 10px 50px; */
     border-radius: 20px;
     cursor: grab;
 }
@@ -110,9 +111,27 @@
     width: 200px;
 }
 .col-3{
-    width: 200px;
-    height: 200px;
+    /* width: 200px; */
+    /* height: 200px; */
 }
 .myDash{
     margin-left: 20px;
+}
+.caseForm{
+
+    padding-bottom: 25px;
+}
+.btnNext{
+    margin-bottom: 50px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    background-color: yellowgreen;
+}
+#caseTable  tr{
+    color: red;
+    border: 1px solid black;
+    border-radius: 30px;
+    padding-bottom: 20px !important;
+    /* background-color: #c7fcb9 ; */
 }

@@ -1,7 +1,15 @@
-
-   
-    
-
+var caseDetails1 = [];
+        if(localStorage.getItem('caseDetails1') === undefined || localStorage.getItem('caseDetails1') === null){
+            caseDetails1=[
+                {"firstName":"asas","lastName":"","ptnFatherName":"","ptnMotherName":"","ptnGender":"on","ptnDob":"","age":"","number":"","number2":"","email":"","caste":"select caste","religion":"select Religion","marrital":"select status","education":"select Educational Qualification","occupation":"select Occupation"},
+                {"firstName":"dddda","lastName":"","ptnFatherName":"","ptnMotherName":"","ptnGender":"on","ptnDob":"","age":"","number":"","number2":"","email":"","caste":"select caste","religion":"select Religion","marrital":"select status","education":"select Educational Qualification","occupation":"select Occupation"},
+                {"firstName":"om","lastName":"","ptnFatherName":"","ptnMotherName":"","ptnGender":"on","ptnDob":"","age":"","number":"","number2":"","email":"","caste":"select caste","religion":"select Religion","marrital":"select status","education":"select Educational Qualification","occupation":"select Occupation"},
+                {"firstName":"kkkk","lastName":"","ptnFatherName":"","ptnMotherName":"","ptnGender":"on","ptnDob":"","age":"","number":"","number2":"","email":"","caste":"select caste","religion":"select Religion","marrital":"select status","education":"select Educational Qualification","occupation":"select Occupation"},
+                {"firstName":"mmkmk","lastName":"","ptnFatherName":"","ptnMotherName":"","ptnGender":"on","ptnDob":"","age":"","number":"","number2":"","email":"","caste":"select caste","religion":"select Religion","marrital":"select status","education":"select Educational Qualification","occupation":"select Occupation"}
+            ];
+            localStorage.setItem('caseDetails1', JSON.stringify(caseDetails1));
+        }
+        var id = caseDetails1.length;
   
 $(function(){
     
@@ -97,6 +105,7 @@ let cardData = [
 ];
 
 function bodyload(){
+    // caseDetailsData1 = localStorage.removeItem('caseDetails1')
     let crnUser = JSON.parse(localStorage.getItem("currentuser"));
     $("#role").html(crnUser.role);
     
