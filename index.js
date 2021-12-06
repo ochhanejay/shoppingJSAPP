@@ -91,8 +91,8 @@ $(function(){
     
 });
 let cardData = [
-    {Photo:"images/1.jpg",Name:"Total Women Centers",Cases:19},
-    {Photo:"images/1.jpg",Name:"Total Cases Registered In Women Centers",Cases:423},
+    {id: 1, Photo:"images/1.jpg",Name:"Total Women Centers",Cases:0},
+    {id:2, Photo:"images/1.jpg",Name:"Total Cases Registered In Women Centers",Cases:0},
     {Photo:"images/3.jpg",Name:"Total Sexual Abuse Cases in PS",Cases:34},
     {Photo:"images/4.jpg",Name:"FIR",Cases:423},
     {Photo:"images/5.jpg",Name:"Medical Test",Cases:26},

@@ -11,24 +11,28 @@
         
         <script>
             function caseDataLoad(){
+        let currentUserId = JSON.parse(localStorage.getItem('currentUserId'));
            let caseDetails1= localStorage.getItem('caseDetails1');
            caseDetails1=JSON.parse(caseDetails1);
-           document.getElementById('caseId').innerHTML=caseDetails1[caseDetails1.length-1].id;
-            document.getElementById('fstNamePrint').innerHTML=caseDetails1[caseDetails1.length-1].firstName;
+
+           let currentCaseData = caseDetails1.filter((data)=>{return data.id === currentUserId});
+
+           document.getElementById('caseId').innerHTML=currentCaseData[0].id;
+            document.getElementById('fstNamePrint').innerHTML=currentCaseData[0].firstName;
             // document.getElementById('fstNamePrint').innerText=caseDetails[caseDetails.length-1].lastName;
-            document.getElementById('fatherNamePrint').innerHTML=caseDetails1[caseDetails1.length-1].ptnFatherName;
-            document.getElementById('motherNamePrint').innerHTML=caseDetails1[caseDetails1.length-1].ptnMotherName;
-            document.getElementById('genderPrint').innerHTML=caseDetails1[caseDetails1.length-1].ptnGender;
-            document.getElementById('agePrint').innerHTML=caseDetails1[caseDetails1.length-1].ptnDob;
-            document.getElementById('dobPrint').innerHTML=caseDetails1[caseDetails1.length-1].age;
-            document.getElementById('mobNumPrint').innerHTML=caseDetails1[caseDetails1.length-1].number;
-            document.getElementById('mobNumPrint2').innerHTML=caseDetails1[caseDetails1.length-1].number2;
-            document.getElementById('emailPrint').innerHTML=caseDetails1[caseDetails1.length-1].email;
-            document.getElementById('castePrint').innerHTML=caseDetails1[caseDetails1.length-1].caste;
-            document.getElementById('religionPrint').innerHTML=caseDetails1[caseDetails1.length-1].religion;
-            document.getElementById('marritalPrint').innerHTML=caseDetails1[caseDetails1.length-1].marrital;
-            document.getElementById('educationPrint').innerHTML=caseDetails1[caseDetails1.length-1].education;
-            document.getElementById('occupationPrint').innerHTML=caseDetails1[caseDetails1.length-1].occupation;
+            document.getElementById('fatherNamePrint').innerHTML=currentCaseData[0].ptnFatherName;
+            document.getElementById('motherNamePrint').innerHTML=currentCaseData[0].ptnMotherName;
+            document.getElementById('genderPrint').innerHTML=currentCaseData[0].ptnGender;
+            document.getElementById('agePrint').innerHTML=currentCaseData[0].ptnDob;
+            document.getElementById('dobPrint').innerHTML=currentCaseData[0].age;
+            document.getElementById('mobNumPrint').innerHTML=currentCaseData[0].number;
+            document.getElementById('mobNumPrint2').innerHTML=currentCaseData[0].number2;
+            document.getElementById('emailPrint').innerHTML=currentCaseData[0].email;
+            document.getElementById('castePrint').innerHTML=currentCaseData[0].caste;
+            document.getElementById('religionPrint').innerHTML=currentCaseData[0].religion;
+            document.getElementById('marritalPrint').innerHTML=currentCaseData[0].marrital;
+            document.getElementById('educationPrint').innerHTML=currentCaseData[0].education;
+            document.getElementById('occupationPrint').innerHTML=currentCaseData[0].occupation;
         }
         $("#dashboard").click(()=>{
         window.location=("dashboard.html");

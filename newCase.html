@@ -31,7 +31,7 @@
                 if(caseDetailsData1 !== undefined && caseDetailsData1 !== "null") {
                 caseDetailsData1 = JSON.parse(caseDetailsData1);
                 caseDetails1 = caseDetailsData1;
-                count=caseDetails1.length;
+                // count=caseDetails1.length;
             } 
                 id= ++(count);
             let ptnName = document.getElementById('fstName').value;
@@ -68,7 +68,8 @@
                 religion:religion,
                 marrital:marrital,
                 education:education,
-                occupation:occupation
+                occupation:occupation,
+                // caseTypeId: caseTypeId
                 // dob: dob
             }
             if(ptnName===""){
@@ -108,6 +109,7 @@
             } 
             caseDetails1.push(pationerData1);
             localStorage.setItem('caseDetails1',JSON.stringify(caseDetails1));
+            localStorage.setItem('currentUserId', id);
             window.location='newcaseData.html';
         }
         $("#dashboard").click(()=>{
