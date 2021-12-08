@@ -9,7 +9,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="index.js"></script>
     </head>
-    <body  onload="bodyload()">
+    <body onload="bodyload()">
        <div class="row">
         <div class="col-2 rio">
             <img src="images/suraksha.png" height="50px" width="106%">
@@ -31,9 +31,12 @@
                     <button class="searchbtn" type="submit">Search</button>
                     <button class="right" style="color: red; background-color: rgb(252, 247, 247);"><span><i class="far fa-bell"></i></span></button>
                     <h3 style="margin-left: 20px;" id="role">   </h3>
+                    <button type="button" id="logout"  onclick="userLogout()">log out</button>
+
                   </form>
                 </div>
               </nav>
+              <hr>
              <h1>Well Come To Reports</h1>
                   
               </body>

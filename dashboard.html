@@ -7,9 +7,11 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="index.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="index.js"></script>
+        <script src="dashboard.js"></script>
+        
+
     </head>
-    <body  onload="bodyload()">
+    <body onload="bodyload()">
        <div class="row">
         <div class="col-2 rio">
             <img src="images/suraksha.png" height="50px" width="106%">
@@ -24,32 +26,24 @@
 
         </div>
         <div class="col-10">
-            <div class="row">
-              <nav class="navbar navbar-light bg-light">
-                <div class=" col-4">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
                   <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="searchbtn" type="submit">Search</button>
                     <button class="right" style="color: red; background-color: rgb(252, 247, 247);"><span><i class="far fa-bell"></i></span></button>
-                    <div class="userHead">
-                      <img style="margin-left: 80px;" src="images/516-5167304_transparent-background-white-user-icon-png-png-download.png" width="50px" alt="">
-                    <h3 style="margin-left: 0px;" id="role">   </h3>
-                    </div>
+                    <h3 style="margin-left: 20px;" id="role">   </h3>
+                    <button id="logout"  onclick="userLogout()" type="button">log out</button>
+
                   </form>
                 </div>
               </nav>
-            </div>
-            <hr>
-             <div class="myDash">
-              <h2>Dashboard</h2>
-              <h5 class="text-success">HOME > Dashboard</h5>
-
-          </div>
-          
-             <div class="row" id="make-card">
+              <hr>
+             <h1> Dashboard</h1>
+             <h5>HOME > Dashboard</h4>
+              <div class="row" id="make-card">
+               
                 
-                
-              </div> 
-            </div>  
+              </div>   
       </body>
 </html>

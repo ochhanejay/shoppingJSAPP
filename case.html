@@ -6,62 +6,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="index.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-        
-        <script>
-          function getCaseData(id) {
-            localStorage.setItem('currentUserId', id);
-            window.location="newCaseData.html";
-          }
-          $ (document).ready(function(){
-            
-            // $("caseTable").css("display","none")
-            
-            let caseDetails1= localStorage.getItem('caseDetails1');
-            if(caseDetails1 !== undefined){
-                caseDetails1 = JSON.parse(caseDetails1);
-                for(let cData of caseDetails1){
-                  // currentCaseType = caseTypeArray.filer(cData.caseType===data.id)
-                var addcontrols = `<tr onclick="getCaseData(${cData.id})">`;
-                    addcontrols += `<td>${cData.id}</td>
-                                    <td>${cData.firstName}</td>
-                                    <td>${cData.ptnFatherName}</td>
-                                    <td>${cData.ptnMotherName}</td>
-                                    <td>${cData.ptnGender}</td>
-                                    <td>${cData.ptnDob}</td>
-                                    <td>${cData.age}</td>
-                                    <td>${cData.number}</td>
-                                    <td>${cData.email}</td>
-                      
-                                    </tr>`;
-                    $("#tbodyData").append(addcontrols);
-                    $("tr").css({"background-color":"#D3E4CD","color":"black","border":"2px solid green"});
-            }
-            }
-            // getCaseData(id){
-            //     data = caseDetails.filter(id);
+        <script src="case.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
-            // }
-            $("#caseTable").dataTable();       
-            document.getElementById('caseNumber').innerText=caseDetails1.length-5; 
-            // $( "tr" ).css({"cursor":"pointer"});
-            // $( "tr" ).click(function() {
-            //   debugger
-            //     alert(id);
-            //     window.location="newCaseData.html";
-            //   });   
-        }); 
-          
-          function btnNewCase(){
-            window.location='newCase.html'
-          }
-        </script>
     </head>
-    <body  onload="bodyload()">
+    <body onload="bodyload()">
        <div class="row">
         <div class="col-2 rio">
             <img src="images/suraksha.png" height="50px" width="106%">
@@ -76,56 +28,69 @@
 
         </div>
         <div class="col-10">
-          <div class="row">
             <nav class="navbar navbar-light bg-light">
-              <div class=" col-4">
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="searchbtn" type="submit">Search</button>
-                  <button class="right" style="color: red; background-color: rgb(252, 247, 247);"><span><i class="far fa-bell"></i></span></button>
-                  <div class="userHead">
-                    <img style="margin-left: 80px;" src="images/516-5167304_transparent-background-white-user-icon-png-png-download.png" width="50px" alt="">
-                  <h3 style="margin-left: 0px;" id="role">   </h3>
-                  </div>
-                </form>
-              </div>
-            </nav>
-          </div>
-          <hr>
+                <div class="container-fluid">
+                  <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="searchbtn" type="submit">Search</button>
+
+
+                    <button class="right"><span style="color: red; background-color: rgb(252, 247, 247);"><i class="far fa-bell" ></i></span></button>
+                    <h3 style="margin-left: 20px;" id="role"></h3>
+                    <button type="button" onclick="userLogout()" id="logout">log out</button>
+
+                  </form>
+                </div>
+               
+              </nav>
+              <hr>
               <div class="my-case">
+               
               <h2>My Cases</h2>
               <p>Home  >  My Cases</p>
-              <div class="button">
-                <button>New Case    <span id="caseNumber">1</span></button>
-                <button style="margin-left: 30px;">Follow's    <span>0</span></button>
-                <button style="margin-left: 30px;">Closed Cases    <span>0</span></button>
-                <button style="margin-left: 30px;" onclick="btnNewCase()" id="btnNewCase">Create New Cases    </button>
-
+              <div class="form-check form-switch toggle2">
+                <p>Today</p>
+                <input class="form-check-input" type="checkbox" role="switch" id="togglebtn">
               </div>
-
+             
+              <div class="button">
+                <button>New Case    <span id="caseCount">1</span></button>
+                <button style="margin-left: 30px;">Follow's    <span>0</span></button>
+                <button style="margin-left: 30px;" id="close-case">Closed Cases    <span>0</span></button>
+                <button style="margin-left: 30px;" id="create-new-case">Create New Cases    </button><br><br>
+                <hr>
+              </div>
             </div>
-            <table id="caseTable">
-              <thead>
-                  <tr>
-                      <th>Id</th>
+
+            <div class="row">
+              <div class="col-12">
+                <table id="example" class="display" style="width:100%"> 
+                  <thead>
+                    <tr>
+                      <th>Id </th>
                       <th>Name</th>
+                      <th>Surname</th>
                       <th>Father Name</th>
                       <th>Mother Name</th>
-                      <th>Gender</th>
-                      <th>Date of Birth</th>
-                      <th>Age</th>
-                      <th>Contact No.</th>
-                      <th>Email</th>
-                      <!-- <th>Case Type</th> -->
+                      <th>Gender </th>
+                      <th>Date Of Birth</th>
+                      <th>Age </th>
+                      <th>Contact No</th>
+                      <th>Email Id</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
 
-                  </tr>
-              </thead>
-               <tbody id="tbodyData">
-                  
-              </tbody>
+                </tbody>
+                 
+                </table>
               
-          </table>
+              </div>
+              
+            </div>
         </div>
+        
        </div> 
+       
     </body>
 </html>

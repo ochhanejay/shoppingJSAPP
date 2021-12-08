@@ -1,19 +1,6 @@
-var caseDetails1 = [];
-        if(localStorage.getItem('caseDetails1') === undefined || localStorage.getItem('caseDetails1') === null){
-            caseDetails1=[
-                {"firstName":"asas","lastName":"","ptnFatherName":"","ptnMotherName":"","ptnGender":"on","ptnDob":"","age":"","number":"","number2":"","email":"","caste":"select caste","religion":"select Religion","marrital":"select status","education":"select Educational Qualification","occupation":"select Occupation"},
-                {"firstName":"dddda","lastName":"","ptnFatherName":"","ptnMotherName":"","ptnGender":"on","ptnDob":"","age":"","number":"","number2":"","email":"","caste":"select caste","religion":"select Religion","marrital":"select status","education":"select Educational Qualification","occupation":"select Occupation"},
-                {"firstName":"om","lastName":"","ptnFatherName":"","ptnMotherName":"","ptnGender":"on","ptnDob":"","age":"","number":"","number2":"","email":"","caste":"select caste","religion":"select Religion","marrital":"select status","education":"select Educational Qualification","occupation":"select Occupation"},
-                {"firstName":"kkkk","lastName":"","ptnFatherName":"","ptnMotherName":"","ptnGender":"on","ptnDob":"","age":"","number":"","number2":"","email":"","caste":"select caste","religion":"select Religion","marrital":"select status","education":"select Educational Qualification","occupation":"select Occupation"},
-                {"firstName":"mmkmk","lastName":"","ptnFatherName":"","ptnMotherName":"","ptnGender":"on","ptnDob":"","age":"","number":"","number2":"","email":"","caste":"select caste","religion":"select Religion","marrital":"select status","education":"select Educational Qualification","occupation":"select Occupation"}
-            ];
-            localStorage.setItem('caseDetails1', JSON.stringify(caseDetails1));
-        }
-        var id = caseDetails1.length;
-  
+// var totalcasedata=[{"Name":"Mohit","Surname":"","Father":"","Mother":"","Female":"female","Dob":"0315-05-21","Age":"-112","Contactnumber":"111111111111","Alltnumber":"","Email":"","Caste":"","Religen":"","Education":""}];
+   
 $(function(){
-    
-
     let userdetail = [
         {userid : "a" , password : "a123" , name: "a1", role: "Reception"},
         {userid : "b" , password : "b123", name: "b1", role: "Addmin"},
@@ -30,41 +17,49 @@ $(function(){
 
     
 
-        var currentU = userdetail.filter((data)=> 
-                    data.userid === txtid && data.password === txtpassword);
-        //for(var data of userdetail){debugger;
-            if(currentU.length > 0){
+
+        for(var data of userdetail){
+            if(data.userid === txtid && data.password === txtpassword){
 
                
-                    let currentUserData = currentU[0];
-                    localStorage.setItem("currentuser",JSON.stringify(currentUserData));
+                    
+                    localStorage.setItem("currentuser",JSON.stringify(data));
 
                     localStorage.setItem("userdetail",JSON.stringify(userdetail));
 
-                if(currentUserData.role == "Reception"){
+                if(data.role == "Reception"){
 
                     currentuser = {};
                     window.location=("case.html");
-                }
-
-                if(currentUserData.role == "Addmin"){
-                    window.location=("dashboard.html");
-                    return;
-                
-                }
-                if(currentUserData.role == "Security"){
-                    window.location=("report.html")
-                    return;
-                }
-            }
-            else {
-                alert("Wrong id & password");                
+                return;
             }
 
+
+            if(data.role == "Addmin"){
+                window.location=("dashboard.html");
+                return;
+               
+            }
+            if(data.role == "Security"){
+                window.location=("report.html")
+                return;
+            }
+
+            }
+        };
+        alert("Wrong id & password");
         
 
         
     });
+
+
+    
+
+
+
+
+
     $("#dashboard").click(()=>{
         window.location=("dashboard.html");
     });
@@ -75,84 +70,43 @@ $(function(){
 
     $("#case").click(()=>{
         window.location=("case.html");
+        
+    });
+
+    $("#create-new-case").click(()=>{
+        window.location=("newcase.html");
+
+          datatable();  
     });
 
 
-    $("#forms").click(()=>{
-                    // $("#forms").style.display="none";
-                    // $("#key-contacts").style.display="none";
-                    // document. getElementById("forms").disabled = true;
-                    // document. getElementById("key-contacts").disabled = true;
-                    document.getElementById("forms").style. display = "none";
-                    document. getElementById("key-contacts").style.display = "none";
 
+
+    $("#logout").click(()=>{debugger;
+        localStorage.removeItem("currentuser");
+        window.location=("login.html");
     });
 
     
+
+   
 });
-let cardData = [
-    {id: 1, Photo:"images/1.jpg",Name:"Total Women Centers",Cases:0},
-    {id:2, Photo:"images/1.jpg",Name:"Total Cases Registered In Women Centers",Cases:0},
-    {Photo:"images/3.jpg",Name:"Total Sexual Abuse Cases in PS",Cases:34},
-    {Photo:"images/4.jpg",Name:"FIR",Cases:423},
-    {Photo:"images/5.jpg",Name:"Medical Test",Cases:26},
-    {Photo:"images/6.jpg",Name:"No. 161 Done",Cases:48},
-    {Photo:"images/7.jpg",Name:"No. 164 Done",Cases:43},
-    {Photo:"images/8.jpg",Name:"FSL",Cases:35},
-    {Photo:"images/9.png",Name:"Convicted",Cases:34},
-    {Photo:"images/10.png",Name:"Aquitted",Cases:34}
-
-];
-
 function bodyload(){
-    // caseDetailsData1 = localStorage.removeItem('caseDetails1')
+
     let crnUser = JSON.parse(localStorage.getItem("currentuser"));
     $("#role").html(crnUser.role);
-    
-    if(crnUser.role === 'Reception') {
-            hideSomeFunctions();
+   if(crnUser.role === "Reception"){
+    document.getElementById("forms").style.display="none";
+    document.getElementById("key-contacts").style.display="none";
+    document.getElementById("center-management").style.display="none";
+    document.getElementById("user-management").style.display="none";
 
-            
-            
-    }
-    for( index in cardData){
-        var cardDash = document.getElementById('make-card');
-
-        var cardDiv = document.createElement('div');
-            cardDiv.className = 'card col-3  text-center ';
-            cardDiv.style.margin='10px';
-            cardDiv.style.width='290px';
-            cardDiv.style.height='200px';
-            cardDiv.style.borderRadius='20px';
-
-            var bodyDiv = document.createElement('div');
-            bodyDiv.className = 'card-body';
-            var bodyImg = document.createElement('img');
-            bodyImg.src = cardData[index].Photo;
-            bodyImg.width = '100';
-            bodyImg.height = '100';
-            bodyDiv.appendChild(bodyImg);
-            var bodyH6= document.createElement('h6');
-            bodyH6.innerHTML = cardData[index].Name;
-            bodyDiv.appendChild(bodyH6);
-            var bodyH2 = document.createElement('h2');
-            bodyH2.innerHTML = cardData[index].Cases;
-            bodyDiv.appendChild(bodyH2);
-            cardDiv.appendChild(bodyDiv);
-
-            cardDash.appendChild(cardDiv);
-    }
-   
-    // $.each(carddata,function(key,value){
-        
-    //     $(` <div> <img src="${value.Photo}"> 
-    //     <h5>${value.Name} </h5> 
-    //     <h4> ${value.Count} </h4> 
-    //     </div> </div>`).appendTo('#make-card');
-    // });
-
-};
-function hideSomeFunctions() {
-    document.getElementById('forms').style.display='none';
-    document.getElementById('key-contacts').style.display='none' ;               
+   }
 }
+
+
+
+
+
+
+
