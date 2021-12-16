@@ -2,9 +2,16 @@
    
 $(function(){
     let userdetail = [
-        {userid : "a" , password : "a123" , name: "a1", role: "Reception"},
-        {userid : "b" , password : "b123", name: "b1", role: "Addmin"},
-        {userid : "c" , password : "c123", name: "c1", role: "Security"},
+        {userid : "user1" , password : "user1" , name: "Ram", role: "Reception"},
+        {userid : "user2" , password : "user2" , name: "Shyam", role: "Reception"},
+
+        {userid : "user3" , password : "user3", name: "Dark", role: "Addmin"},
+        {userid : "user4" , password : "user4", name: "John", role: "Addmin"},
+
+        {userid : "user5" , password : "user5", name: "Rio", role: "Counselor",Photo:"images/rio.jpg", caseIds:[]},
+        {userid : "user6" , password : "user6", name: "Profesor", role: "Counselor",Photo:"images/proffeser.jpg", caseIds:[]},
+
+        
 
     ];
     
@@ -31,6 +38,7 @@ $(function(){
 
                     currentuser = {};
                     window.location=("case.html");
+
                 return;
             }
 
@@ -40,7 +48,7 @@ $(function(){
                 return;
                
             }
-            if(data.role == "Security"){
+            if(data.role == "Counselor"){
                 window.location=("report.html")
                 return;
             }

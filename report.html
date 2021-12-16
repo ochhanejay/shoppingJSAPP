@@ -6,8 +6,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="index.js"></script>
+        <script src="report.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+  
+
     </head>
     <body onload="bodyload()">
        <div class="row">
@@ -37,7 +43,31 @@
                 </div>
               </nav>
               <hr>
-             <h1>Well Come To Reports</h1>
-                  
+              <div class="row">
+                <div class="col-12">
+                  <table id="example" class="display" style="width:100%"> 
+                    <thead>
+                      <tr>
+                        <th>Id </th>
+                        <th>Name</th>
+                        <th>Father Name</th>
+                        <th>Mother Name</th>
+                        <th>Gender </th>
+                        <th>Date Of Birth</th>
+                        <th>Age </th>
+                        <th>Contact No</th>
+                        <th>Email Id</th>
+                      </tr>
+                  </thead>
+                  <tbody id="tableBody">
+  
+                  </tbody>
+                   
+                  </table>
+                
+                </div>
+                
+              </div>
+             </div>     
               </body>
 </html>

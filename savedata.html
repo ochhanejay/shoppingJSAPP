@@ -72,9 +72,7 @@
                     <label>Education</label>
                     <p id="saveeducation"></p><br>
 
-                    <button class="btn btn-success" id="savedata">
-                      Save 
-                    </button>
+                   
 
                 </div>
                 <div class="col-6">
@@ -98,7 +96,53 @@
 
                     <label>Case</label>
                     <p id="savecase"></p>
+                   
+
                 </div>
                </div>
+               <br><hr><br>
+               <div class="row">
+                <div class="col-2 ctn">
+                 <h6>Case Assign To</h6>
+                 <br><br>
+                 <h6>Counsellor Name</h6>
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control"  value="Counsellor">
+               <br><br>
+                <select id="CunsChnge" class="form-control" onchange="CounsleorChng()">
+                  <option>Select Name</option>
+                  <option>Rio</option>
+                  <option>Profesor</option>
+                </select>
+              </div>
+              <div class="col-1">
+
+              </div>
+              <div class="col-2">
+                <img  width="150px" height="150px" id="cunImage">
+              </div>
+              <div class="col-3 deta">
+                <pre>Name : <Span id="cunName"></Span></pre>
+                <pre>Case Count : <span id="cunCount"></span></pre>
+              </div>
+              </div><hr>
+              <div class="row">
+            <div class="col-2">
+              <button type="button" class="btn btn-success back" id="back">Back</button>
+            </div>
+            <div class="col-8">
+              
+            </div>
+
+            <div class="col-2">
+              <button class="btn btn-success" id="savedata" type="button" disabled>Save</button>
+            </div>
+          </div>
+                 
+                
+               
+               </div>
+               
             </body>
             </html>

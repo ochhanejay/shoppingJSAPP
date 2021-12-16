@@ -3,9 +3,11 @@
 function bodyload(){debugger;
 
 
-    let crnUser = JSON.parse(localStorage.getItem("currentuser"));
-    $("#role").html(crnUser.role);
-   if(crnUser.role === "Reception"){
+    var crnUser = JSON.parse(localStorage.getItem("currentuser"));
+    $("#role").html(
+        
+        crnUser.role);
+   if(crnUser.role === "Reception" || crnUser.role === "Counselor"){
     document.getElementById("forms").style.display="none";
     document.getElementById("key-contacts").style.display="none";
     document.getElementById("center-management").style.display="none";
@@ -22,129 +24,91 @@ function bodyload(){debugger;
     }
 
    if(casetype == 1 ||  casetype == 2 || casetype == 3 || casetype == 4 || casetype == 5 || casetype == 6 || casetype == 7 || casetype == 8 || casetype == 8 || casetype == 9 || casetype == 10){
-        let casetypedata = totalcasedata.filter(function(item){ return item.CasesId == casetype});
-
-        for(var i = 1; i <= casetypedata.length; i++){
-            let datatable = document.getElementById("tableBody");
-            
-            var tableTR  = document.createElement(`tr`);
-            tableTR.setAttribute('onclick', `findId(${casetypedata[i-1].Id})`);
-           
-           
-            var td0 = document.createElement("td");
-            td0.innerHTML = casetypedata[i-1].Id;
-            tableTR.appendChild(td0);
-        
-            var td1 = document.createElement("td");
-            td1.innerHTML= casetypedata[i-1].Name;
-            tableTR.appendChild(td1);
-        
-            var td2 = document.createElement("td");
-            td2.innerHTML= casetypedata[i-1].Surname;
-            tableTR.appendChild(td2);
-        
-            var td3 = document.createElement("td");
-            td3.innerHTML= casetypedata[i-1].Father;
-            tableTR.appendChild(td3);
-        
-            var td4 = document.createElement("td");
-            td4.innerHTML= casetypedata[i-1].Mother;
-            tableTR.appendChild(td4);
-        
-            var td5 = document.createElement("td");
-            td5.innerHTML= casetypedata[i-1].Female;
-            tableTR.appendChild(td5);
-        
-            var td6 = document.createElement("td");
-            td6.innerHTML= casetypedata[i-1].Dob;
-            tableTR.appendChild(td6);
-        
-        
-            var td7 = document.createElement("td");
-            td7.innerHTML= casetypedata[i-1].Age;
-            tableTR.appendChild(td7);
-        
-        
-            var td8 = document.createElement("td");
-            td8.innerHTML= casetypedata[i-1].Contactnumber;
-            tableTR.appendChild(td8);
-        
-            var td10 = document.createElement("td");
-            td10.innerHTML= casetypedata[i-1].Email;
-            tableTR.appendChild(td10);
-        
-            datatable.appendChild(tableTR);
-        }
-        
-
-
+      
+    let casetypedata = totalcasedata.filter(function(item){ return item.CasesId == ("case"+casetype)});
+    tableDataPrint(casetypedata);
    }
-     
-
-  
-        if(casetype == 0){
-    
-     for(var i = 1; i <= totalcasedata.length; i++){
-        let datatable = document.getElementById("tableBody");
-        
-        var tableTR  = document.createElement(`tr`);
-        tableTR.setAttribute('onclick', `findId(${totalcasedata[i-1].Id})`);
-       
-       
-        var td0 = document.createElement("td");
-        td0.innerHTML = totalcasedata[i-1].Id;
-        tableTR.appendChild(td0);
-    
-        var td1 = document.createElement("td");
-        td1.innerHTML= totalcasedata[i-1].Name;
-        tableTR.appendChild(td1);
-    
-        var td2 = document.createElement("td");
-        td2.innerHTML= totalcasedata[i-1].Surname;
-        tableTR.appendChild(td2);
-    
-        var td3 = document.createElement("td");
-        td3.innerHTML= totalcasedata[i-1].Father;
-        tableTR.appendChild(td3);
-    
-        var td4 = document.createElement("td");
-        td4.innerHTML= totalcasedata[i-1].Mother;
-        tableTR.appendChild(td4);
-    
-        var td5 = document.createElement("td");
-        td5.innerHTML= totalcasedata[i-1].Female;
-        tableTR.appendChild(td5);
-    
-        var td6 = document.createElement("td");
-        td6.innerHTML= totalcasedata[i-1].Dob;
-        tableTR.appendChild(td6);
-    
-    
-        var td7 = document.createElement("td");
-        td7.innerHTML= totalcasedata[i-1].Age;
-        tableTR.appendChild(td7);
-    
-    
-        var td8 = document.createElement("td");
-        td8.innerHTML= totalcasedata[i-1].Contactnumber;
-        tableTR.appendChild(td8);
-    
-        var td10 = document.createElement("td");
-        td10.innerHTML= totalcasedata[i-1].Email;
-        tableTR.appendChild(td10);
-    
-        datatable.appendChild(tableTR);
-    }
-    }
+   else{
+    tableDataPrint(totalcasedata);
+   }
     
     $('#example').DataTable();
     document.getElementById("caseCount").innerHTML=totalcasedata.length;
 }
     
 };
+function tableDataPrint(tableData) {
+    // empty the table
+    let datatable = document.getElementById("tableBody");
+    datatable.innerHTML='';
+    for(var i = 1; i <= tableData.length; i++){
+        var tableTR  = document.createElement(`tr`);
+        tableTR.setAttribute('onclick', `findId(${tableData[i-1].Id})`);
+       
+       
+        var td0 = document.createElement("td");
+        td0.innerHTML = tableData[i-1].Id;
+        tableTR.appendChild(td0);
+    
+        var td1 = document.createElement("td");
+        td1.innerHTML= tableData[i-1].Name;
+        tableTR.appendChild(td1);
+    
+        var td2 = document.createElement("td");
+        td2.innerHTML= tableData[i-1].Surname;
+        tableTR.appendChild(td2);
+    
+        var td3 = document.createElement("td");
+        td3.innerHTML= tableData[i-1].Father;
+        tableTR.appendChild(td3);
+    
+        var td4 = document.createElement("td");
+        td4.innerHTML= tableData[i-1].Mother;
+        tableTR.appendChild(td4);
+    
+        var td5 = document.createElement("td");
+        td5.innerHTML= tableData[i-1].Female;
+        tableTR.appendChild(td5);
+    
+        var td6 = document.createElement("td");
+        td6.innerHTML= tableData[i-1].Date;
+        tableTR.appendChild(td6);
+    
+    
+        var td7 = document.createElement("td");
+        td7.innerHTML= tableData[i-1].Age;
+        tableTR.appendChild(td7);
+    
+    
+        var td8 = document.createElement("td");
+        td8.innerHTML= tableData[i-1].Contactnumber;
+        tableTR.appendChild(td8);
+    
+        var td10 = document.createElement("td");
+        td10.innerHTML= tableData[i-1].Email;
+        tableTR.appendChild(td10);
+    
+        datatable.appendChild(tableTR);
+    }
+}
 function findId(Id){debugger;
     localStorage.setItem("currentuserid",Id);
     window.location=("savedata.html")
+ }
+
+
+
+ function togglebtn(){debugger
+    
+  var togglebtn=  document.getElementById("togglebtn");
+  if(togglebtn.checked == true){
+      let today = new Date().toLocaleDateString(); 
+        let casetypedata = totalcasedata.filter(function(item){ return item.Date == today});
+        tableDataPrint(casetypedata);
+  }
+  else{
+    tableDataPrint(totalcasedata);
+  }
  }
 
 $(function(){
@@ -174,7 +138,7 @@ $(function(){
 
     $("#next-btn").click(()=>{debugger;
 
-        
+        localStorage.setItem("kapil",0)
 
 
         let currentcasedata = {};
@@ -270,6 +234,10 @@ $(function(){
         if(cases === "Aquitted"){
             caseType = 10;
         }
+        let today = new Date().toLocaleDateString();
+
+    var crnUser = JSON.parse(localStorage.getItem("currentuser"));
+
 
          currentcasedata={
             Id:count+1,            
@@ -286,10 +254,14 @@ $(function(){
             Caste:caste,
             Religen:religen,
             Education:education,
-            CasesId:caseType,
+            CasesId:("case"+caseType),
+            Date:today,
+            User:crnUser.userid,
+            counslerid:"",
         }
         console.log(currentcasedata);
        
+
        
     }
     

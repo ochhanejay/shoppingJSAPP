@@ -15,7 +15,7 @@ function bodyload(){
 
     let crnUser = JSON.parse(localStorage.getItem("currentuser"));
     $("#role").html(crnUser.role);
-   if(crnUser.role === "Reception"){
+   if(crnUser.role === "Reception" || crnUser.role === "Counselor"){
     document.getElementById("forms").style.display="none";
     document.getElementById("key-contacts").style.display="none";
     document.getElementById("center-management").style.display="none";

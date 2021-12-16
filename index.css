@@ -142,4 +142,25 @@
       color: black;
       margin-right: 200px;
    }
-   
+   #savedata{
+       margin-left: 30px;
+   }
+   .ctn{
+       margin-top: 15px;
+       margin-left: 30px;
+   }
+   .deta{
+       margin-top: 15px;
+       margin-left: -30px;
+   }
+   .deta span{
+       color: red;
+       font-weight: bold;
+       font-family: sans-serif;
+   }
+   #savedata{
+       justify-content: center;
+   }
+   .back{
+       margin-left: 20px;
+   }
