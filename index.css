@@ -164,3 +164,9 @@
    .back{
        margin-left: 20px;
    }
+   .cunForm{
+    border: rgb(153, 255, 153) 2px solid;
+    border-radius: 20px;
+    padding-top: 35px;
+    margin-bottom: 20px;
+}

@@ -1,5 +1,6 @@
 function bodyload(){ debugger;
 
+
     let crnUser = JSON.parse(localStorage.getItem("currentuser"));
     $("#role").html(crnUser.role);
    if(crnUser.role === "Reception" || crnUser.role === "Counselor"){
@@ -13,7 +14,15 @@ function bodyload(){ debugger;
     let currentuserid = localStorage.getItem("currentuserid");
 
    var searchresult = totalcasedata.filter(function(item){return item.Id == currentuserid});
+ 
+    if(searchresult[0].counslerid == "user5" || searchresult[0].counslerid == "user6"){
+      
+        document.getElementById("frm").style.display="none";
+    }
+    else{
+        document.getElementById("frm").style.display="show";
 
+    }
 
 
         document.getElementById("savename").innerHTML=searchresult[0].Name;

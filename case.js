@@ -32,7 +32,14 @@ function bodyload(){debugger;
     tableDataPrint(totalcasedata);
    }
     
-    $('#example').DataTable();
+    $('#example').DataTable(
+        {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+
+    } );
     document.getElementById("caseCount").innerHTML=totalcasedata.length;
 }
     
